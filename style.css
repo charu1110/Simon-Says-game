@@ -1,0 +1,33 @@
+body{
+    text-align:center;
+    background-color:pink;
+}
+.button{
+    width:200px;
+    height:200px;
+    border-radius: 20%;
+    border:10px solid black;
+    margin:1rem;
+}
+.button-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.btn1{
+    background-color:rgb(199, 24, 247);
+}
+.btn2{
+   background-color:rgb(223, 249, 56);
+
+}
+.btn3{
+ background-color:rgb(27, 226, 210);
+}
+.btn4{
+    background-color:rgb(211, 42, 42);
+}
+.flash{
+    background-color:white;
+}
