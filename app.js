@@ -1,71 +1,79 @@
-let gamesqn=[];
-let usersn=[];
-let highest=0;
+let gameSqn=[];
+let userSqn=[];
 
-let start=false;
+let btns=["btn1","btn2","btn3","btn4"];
+
+let started=false;
 let level=0;
-
-let buttons=["btn1","btn2","btn3","btn4"];
+let highest=0;
 
 let h2=document.querySelector("h2");
 
-document.addEventListener("keypress",function(){
-    if(start==false){
-    start=true;
-    levelup();
+document.addEventListener("keydown",function(){
+  if(started == false){
+  started=true;
+
+  levelup();
 }
 })
 
-function flashbtn(button){
-  button.classList.add("flash");
-  setTimeout(function(){
-    button.classList.remove("flash");
-  } ,200);
+function btnFlash(rndBtn){
+  
+  rndBtn.classList.add("flash");
+  setTimeout(function (){
+    rndBtn.classList.remove("flash");
+  },200);
 }
 
-function levelup(){
-  usersn=[];
-    level++;
-    h2.innerText=`LEVEL ${level}`;
-    let randInd=Math.floor(Math.random()*3);
-    let randColor=buttons[randInd];
-    let randBtn=document.querySelector(`.${randColor}`);
-    gamesqn.push(randColor);
-    flashbtn(randBtn);
+function levelup() {
+  userSqn=[];
+  level++;
+  h2.innerText = `Level ${level}`;
+
+  let rndInd = Math.floor(Math.random() * 4);
+  let rndColor = btns[rndInd];
+
+  let randBtn = document.querySelector(`.${rndColor}`);
+  gameSqn.push(rndColor);
+  console.log(gameSqn);
+
+  btnFlash(randBtn);
 }
 
-function checkAns(idx){
-  if(usersn[idx]==gamesqn[idx]){
-    if(usersn.length==gamesqn.length){
-      setTimeout(levelup,1000);
-    }
+function CheckBtn(ind){
+if(gameSqn[ind]==userSqn[ind]){
+  if(userSqn.length==gameSqn.length){
+    setTimeout(levelup,1000);
   }
-  else{
-    highest=Math.max(level,highest);
-    h2.innerText=`wrong key pressed \t your score is ${level} !!\n\npress any key to start again \n heighest score : ${highest}`;
-    reset();
+}
+else{
+  console.log("wrong sequence");
+  h2.innerHTML=`game Over ! YOUR SCORE WAS <br>${level}</br> press any key to start again !!!`;
+  let high=document.querySelector(".high");
+  if(highest<level){
+  high.innerText =`highest Score : ${level}`;
+  gameReset();
   }
+}
 }
 
 function btnPress(){
-  let btn=this;
-  flashbtn(btn);
-  let color=btn.getAttribute("id");
-  usersn.push(color);
+let btn=this;
+btnFlash(btn);
 
-  checkAns(usersn.length-1);
-
+ userColor=btn.getAttribute("id");
+userSqn.push(userColor);
+CheckBtn(userSqn.length-1);
 }
 
-
-let allBtns=document.querySelectorAll(".button");
-for(btn of allBtns){
-btn.addEventListener("click",btnPress);
+let allBtn=document.querySelectorAll(`.btn`);
+for(btn of allBtn){
+  btn.addEventListener("click",btnPress);
 }
-function reset(){
-  start=false;
-  gamesqn=[];
-  usersn=[];
-  level=0;
 
+ function gameReset(){
+started=false;
+gameSqn=[];
+userSqn=[];
+level=0;
 }

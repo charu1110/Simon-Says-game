@@ -1,33 +1,45 @@
 body{
     text-align:center;
-    background-color:pink;
+ background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+
 }
-.button{
-    width:200px;
+
+.btn{
     height:200px;
-    border-radius: 20%;
-    border:10px solid black;
-    margin:1rem;
+    width:200px;
+    border:solid 2px black;
+    border-radius:15%;
+    margin:1.5rem;
 }
-.button-container{
-    display:flex;
-    justify-content: center;
-    align-items: center;
 
+.btn-container{
+    display: flex;
+    justify-content:center;
 }
+
 .btn1{
-    background-color:rgb(199, 24, 247);
+    background-color: rgb(237, 164, 70);
 }
-.btn2{
-   background-color:rgb(223, 249, 56);
 
+.btn2{
+    background-color: rgb(160, 52, 167);
 }
+
 .btn3{
- background-color:rgb(27, 226, 210);
+    background-color:rgb(106, 72, 30)
 }
+
 .btn4{
-    background-color:rgb(211, 42, 42);
+   background-color:rgb(38, 100, 100)
 }
+
 .flash{
-    background-color:white;
+    background-color: white;
+    animation:ease-in 1s;
+}
+.high {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
 }
